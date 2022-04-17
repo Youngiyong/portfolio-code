@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string",
+            "description": "QNA 제목" 
+        },
+        "text": {
+            "type": "string",
+            "description": "QNA 내용" 
+        },
+        "is_private": {
+            "type": "boolean",
+            "description": "비공개 여부" 
+        },
+        "is_markdown": {
+            "type": "boolean",
+            "description": "마크다운 여부" 
+        },
+        "is_temp": {
+            "type": "boolean",
+            "description": "임시 저장 여부" 
+        },
+        "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+        }
+    },
+    "required": [
+        "title",
+        "text",
+        "is_private",
+        "is_markdown",
+        "is_temp",
+        "tags"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

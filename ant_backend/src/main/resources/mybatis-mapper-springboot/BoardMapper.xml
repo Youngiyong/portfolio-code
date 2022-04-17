@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTDMapper3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.ant.mapper.springboot.BoardMapper">
+  
+     <select id="boardList" resultType="com.ant.vo.BoardVO">
+         SELECT b3.*, user.nickname as nickname FROM 
+		(SELECT b1.*,b2.board_count FROM board b1
+		LEFT JOIN (SELECT COUNT(*) board_count,board_id FROM comment WHERE board_id IN (SELECT board_id FROM board ) AND comment_hidden = 0 GROUP BY board_id) b2
+		ON b1.board_id = b2.board_id) b3
+		INNER JOIN user ON b3.userid = user.userid ORDER BY board_createdata desc
+     </select>
+     
+     <select id="fetchTopMainBoards" resultType="com.ant.vo.BoardVO">
+		(SELECT * FROM (SELECT b1.*,b2.board_count FROM board b1
+		LEFT JOIN (SELECT COUNT(*) board_count,board_id FROM comment WHERE board_id IN (SELECT board_id FROM board ) AND comment_hidden = 0 GROUP BY board_id) b2
+		ON b1.board_id = b2.board_id
+		) b4  INNER JOIN user ON b4.userid = user.userid WHERE board_LikeNum = (SELECT MAX(board_LikeNum) FROM board where board_hidden = 0 and board_createdata BETWEEN DATE_ADD(NOW(),INTERVAL -1 WEEK ) AND NOW()) LIMIT 1)
+				UNION
+		(SELECT * FROM 
+		(SELECT b1.*,b2.board_count FROM board b1
+		LEFT JOIN (SELECT COUNT(*) board_count,board_id FROM comment WHERE board_id IN (SELECT board_id FROM board ) AND comment_hidden = 0 GROUP BY board_id) b2
+		ON b1.board_id = b2.board_id
+		) b4  
+		INNER JOIN user ON b4.userid = user.userid WHERE board_viewnum = (SELECT MAX(board_viewnum) FROM board WHERE board_hidden = 0 and board_createdata BETWEEN DATE_ADD(NOW(),INTERVAL -1 WEEK ) AND NOW()) LIMIT 1)
+     </select>
+     
+     <select id="boardListLiked" resultType="com.ant.vo.BoardVO">
+		SELECT b3.*, user.nickname as nickname FROM 
+		(SELECT b1.*,b2.board_count FROM board b1
+		LEFT JOIN (SELECT COUNT(*) board_count,board_id FROM comment WHERE board_id IN (SELECT board_id FROM board ) AND comment_hidden = 0 GROUP BY board_id) b2
+		ON b1.board_id = b2.board_id) b3
+		 INNER JOIN user ON b3.userid = user.userid ORDER BY board_LikeNum desc
+     </select>
+     <select id="boardListGetSave" resultType="com.ant.vo.BoardVO">
+		SELECT b3.*, user.nickname as nickname FROM 
+		(SELECT b1.*,b2.board_count FROM board b1
+		LEFT JOIN (SELECT COUNT(*) board_count,board_id FROM comment WHERE board_id IN (SELECT board_id FROM board ) AND comment_hidden = 0 GROUP BY board_id) b2
+		ON b1.board_id = b2.board_id) b3
+		 INNER JOIN user ON b3.userid = user.userid ORDER BY board_LikeNum desc
+     </select>
+     
+     <insert id="insertBoard" parameterType="com.ant.vo.BoardVO">
+		INSERT INTO board(userid ,board_title,board_content,board_search_content)
+		 VALUE (#{userid},#{board_title},#{board_content},#{board_search_content})
+      </insert>
+     
+     <update id="BoardViewCount" parameterType="int">
+         UPDATE board SET board_viewnum = board_viewnum + 1 WHERE board_id = #{boardid}
+     </update>
+     <select id="fetchBoardByID" resultType="com.ant.vo.BoardVO" parameterType="int">
+         SELECT * FROM board INNER JOIN user ON board.userid = user.userid where board.board_id = #{boardid}
+     </select>
+     <update id="updateBoard" parameterType="com.ant.vo.BoardVO">
+         UPDATE board
+         SET board_title = #{board_title},board_search_content = #{board_search_content} ,board_content = #{board_content}, board_hidden = #{board_hidden}, board_LikeNum = #{board_LikeNum},board_modifydata = current_timestamp()
+         WHERE board_id = #{board_id}
+     </update>
+     <insert id="addUserLikeBoard" parameterType="com.ant.vo.BoardVO">
+		INSERT INTO userlikeboard(userid ,board_id)
+		 VALUE (#{userid},#{board_id})
+      </insert>
+     <delete id="deleteUserlikeBoard" parameterType="map">
+         DELETE FROM userlikeboard
+         WHERE userid = #{userid} and board_id = #{board_id}
+     </delete>
+     <select id="fetchUserlikeBoard" resultType="int" parameterType="map">
+         SELECT count(*) FROM userlikeboard where board_id = #{board_id} and userid = #{userid}
+     </select>
+     <select id="fetchUserSavedBoardListCheck" resultType="string" parameterType="int">
+         SELECT board_id FROM usersavedboard WHERE userid = #{userid}
+     </select>
+     <insert id="addSaveddUserBoard" parameterType="com.ant.vo.BoardVO">
+		INSERT INTO usersavedboard(userid ,board_id)
+		 VALUE (#{userid},#{board_id})
+      </insert>
+     <delete id="deleteSaveddUserBoard" parameterType="com.ant.vo.BoardVO">
+         DELETE FROM usersavedboard
+         WHERE userid = #{userid} and board_id = #{board_id}
+     </delete>
+     <select id="fetchUserSavedBoardList" resultType="com.ant.vo.BoardVO" parameterType="int">
+				SELECT * FROM 
+				(SELECT b1.*,b2.board_count FROM board b1
+				LEFT JOIN (SELECT COUNT(*) board_count,board_id FROM comment WHERE board_id IN (SELECT board_id FROM board ) AND comment_hidden = 0 GROUP BY board_id) b2
+				ON b1.board_id = b2.board_id) b1
+				INNER JOIN user ON b1.userid = user.userid
+				WHERE board_id IN
+				(SELECT board_id FROM usersavedboard WHERE userid = 1625408104) ORDER BY board_createdata desc
+     </select>
+          <select id="fetchSavedUserBoardLiked" resultType="com.ant.vo.BoardVO" parameterType="int">#{userid}
+         SELECT * FROM board
+			WHERE board_id IN
+			(SELECT board_id FROM usersavedboard WHERE userid = #{userid}) ORDER BY board_LikeNum desc
+     </select>
+     <delete id="deleteBoard" parameterType="int">
+         DELETE FROM board
+         WHERE board_id = #{board_id}
+     </delete>
+</mapper>

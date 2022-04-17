@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "윤기용" 
+        },
+        "description": {
+            "type": "string",
+            "description": "프로필 설명" 
+        },
+        "profile_links": {
+            "type": "object",
+            "description": "프로필 링크",
+            "properties": {
+                "github": {
+                    "type": "string",
+                    "description": "https://github.com/Youngiyong" 
+                },
+                "instagram": {
+                    "type": "string",
+                    "description": "https://www.instagram.com/dev_giyong" 
+                }, 
+                "facebook": {
+                    "type": "string",
+                    "description": "https://www.facebook.com/01092069357" 
+                }
+            }
+        }
+    },
+    "required": [
+        "name",
+        "description",
+        "profile_links"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "qna_id": {
+            "type": "string",
+            "description": "618f3516-6765-4a09-bd42-504439787a9d" 
+        },
+        "text": {
+            "type": "string",
+            "description": "댓글 내용" 
+        },
+        "is_private": {
+            "type": "boolean",
+            "description": "비공개 여부" 
+        },
+        "is_reply": {
+            "type": "boolean",
+            "description": "답변 여부" 
+        },
+        "reply_to": {
+            "type": "string",
+            "description": "618f3516-6765-4a09-bd42-504439787a9d" 
+        },
+        "level": {
+            "type": "number",
+            "description": "0" 
+        }
+    },
+    "required": [
+        "qna_id",
+        "text",
+        "is_private",
+        "is_reply",
+        "reply_to",
+        "level"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

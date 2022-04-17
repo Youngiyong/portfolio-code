@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "refresh_token": {
+            "type": "string",
+            "description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk2ODk2NCwiZXhwIjoxNjM3NDc0NTY0LCJzdWIiOiJyZWZyZXNoX3Rva2VuIn0.g4ar0baeAoaVkIOYfhev51n8YvccN7-12V3iHoQSLjo"
+        }
+    },
+    "required": [
+        "refresh_token"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

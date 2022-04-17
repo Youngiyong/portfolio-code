@@ -1,0 +1,1258 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: dev-browny-api
+host: 6mstom4jod.execute-api.ap-northeast-2.amazonaws.com
+basePath: /dev
+schemes:
+  - https
+paths:
+  /hello:
+    get:
+      tags:
+        - Swagger Tag Example
+      summary: 테스트 제목
+      description: 테스트 내용
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: x-header
+          in: header
+          description: Header description
+          required: false
+          type: string
+        - name: sid
+          in: query
+          description: Session ID
+          required: false
+          type: string
+        - name: theme
+          in: query
+          description: Theme for for the website
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          description: Auth Header description
+          required: false
+          type: string
+        - in: body
+          name: Test
+          description: Example Description
+          required: true
+          schema:
+            $ref: '#/definitions/Test'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+  /v1/auth/email_auth:
+    post:
+      tags:
+        - auth
+      summary: email code check
+      description: 이메일 코드 확인
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: requestCheckEmailCode
+          description: 이메일 정보, 코드, 타입
+          required: true
+          schema:
+            $ref: '#/definitions/requestCheckEmailCode'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    put:
+      tags:
+        - auth
+      summary: email code update
+      description: 이메일 코드 개요청
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: requestUpdateEmailCode
+          description: 이메일 정보
+          required: true
+          schema:
+            $ref: '#/definitions/requestUpdateEmailCode'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/auth/login:
+    post:
+      tags:
+        - auth
+      summary: 로그인 API
+      description: 이메일, 비밀번호 정보
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: requestLoginUser
+          description: 이메일, 비밀번호
+          required: true
+          schema:
+            $ref: '#/definitions/requestLoginUser'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/responseLoginUser'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/auth/logout:
+    put:
+      tags:
+        - auth
+      summary: 로그아웃 API
+      description: 쿠키 엑세스 토큰, 리프레쉬 토큰 삭제
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/auth/password/email_auth:
+    post:
+      tags:
+        - auth
+      summary: user email check
+      description: 비밀번호 변경 기존 가입 여부 확인
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: requestCheckEmail
+          description: 이메일, 타입
+          required: true
+          schema:
+            $ref: '#/definitions/requestCheckEmail'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/auth/refresh:
+    post:
+      tags:
+        - auth
+      summary: auth refresh token
+      description: 'provider: github, google, kakao'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: requestRefresh
+          description: 토근 정보
+          required: true
+          schema:
+            $ref: '#/definitions/requestRefresh'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/responseRefresh'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/auth/{provider}/callback:
+    get:
+      tags:
+        - auth
+      summary: auth callback
+      description: 'provider: github, google, kakao'
+      produces:
+        - application/json
+      parameters:
+        - name: provider
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: provider
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/auth/{provider}/redirect:
+    get:
+      tags:
+        - auth
+      summary: get redirect url
+      description: 'provider: github, google, kakao'
+      produces:
+        - application/json
+      parameters:
+        - name: provider
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/responseRedirect'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: provider
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/posts:
+    get:
+      responses: {}
+    post:
+      responses: {}
+      security:
+        - auth: []
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/upload/{folder}:
+    post:
+      tags:
+        - image
+      summary: s3 upload image
+      description: 'folder: profiles, posts, qnas'
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk3Nzc2NywiZXhwIjoxNjM0OTgxMzY3LCJzdWIiOiJhY2Nlc3NfdG9rZW4ifQ.66CFWs6kVr9fjeGCe0g5EmkwXDmWd8kAPPSVVNnbRw0
+          required: false
+          type: string
+        - name: folder
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/responseUpload'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+      security:
+        - auth: []
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: folder
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/users:
+    post:
+      tags:
+        - users
+      summary: user email check
+      description: 회원가입 기존 가입 여부 확인
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: requestCreateUser
+          description: 이메일, 비밀번호, 비밀번호 재확인
+          required: true
+          schema:
+            $ref: '#/definitions/requestCreateUser'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/users/followers/{user_id}:
+    get:
+      tags:
+        - follows
+      summary: 팔로워 리스트 API
+      description: 팔로워 리스트
+      produces:
+        - application/json
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/responseFollowers'
+        '401':
+          description: 401 response
+          schema:
+            $ref: '#/definitions/401'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/users/follows:
+    post:
+      tags:
+        - follows
+      summary: 팔로우 등록 API
+      description: 팔로우 등록
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk3Nzc2NywiZXhwIjoxNjM0OTgxMzY3LCJzdWIiOiJhY2Nlc3NfdG9rZW4ifQ.66CFWs6kVr9fjeGCe0g5EmkwXDmWd8kAPPSVVNnbRw0
+          required: false
+          type: string
+        - in: body
+          name: requestFollow
+          description: follow_user_id
+          required: true
+          schema:
+            $ref: '#/definitions/requestFollow'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '401':
+          description: 401 response
+          schema:
+            $ref: '#/definitions/401'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+      security:
+        - auth: []
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/users/follows/{user_id}:
+    get:
+      tags:
+        - follows
+      summary: 유저 팔로우 리스트 API
+      description: 팔로우 리스트
+      produces:
+        - application/json
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/responseFollows'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '401':
+          description: 401 response
+          schema:
+            $ref: '#/definitions/401'
+        '403':
+          description: 403 response
+          schema:
+            $ref: '#/definitions/403'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    delete:
+      tags:
+        - follows
+      summary: 팔로우 삭제 API
+      description: 팔로우 삭제
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk3Nzc2NywiZXhwIjoxNjM0OTgxMzY3LCJzdWIiOiJhY2Nlc3NfdG9rZW4ifQ.66CFWs6kVr9fjeGCe0g5EmkwXDmWd8kAPPSVVNnbRw0
+          required: false
+          type: string
+        - name: user_id
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '401':
+          description: 401 response
+          schema:
+            $ref: '#/definitions/401'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+      security:
+        - auth: []
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/users/password:
+    put:
+      tags:
+        - users
+      summary: 비밀번호 변경 API
+      description: 비밀번호, 이메일 정보
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: requestCreateUser
+          description: 이메일, 비밀번호, 타입
+          required: true
+          schema:
+            $ref: '#/definitions/requestCreateUser'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/200'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/users/profile:
+    put:
+      tags:
+        - profiles
+      summary: profile update
+      description: 프로필 정보 업데이트
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk3Nzc2NywiZXhwIjoxNjM0OTgxMzY3LCJzdWIiOiJhY2Nlc3NfdG9rZW4ifQ.66CFWs6kVr9fjeGCe0g5EmkwXDmWd8kAPPSVVNnbRw0
+          required: false
+          type: string
+        - in: body
+          name: requestUpdateProile
+          description: 토근 정보
+          required: true
+          schema:
+            $ref: '#/definitions/requestUpdateProile'
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/responseProfile'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '401':
+          description: 401 response
+          schema:
+            $ref: '#/definitions/401'
+        '403':
+          description: 403 response
+          schema:
+            $ref: '#/definitions/403'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+      security:
+        - auth: []
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+  /v1/users/profile/thumnail:
+    delete:
+      tags:
+        - profiles
+      summary: profile thumnail null
+      description: 프로필 썸네일 null로 업데이트
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          description: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk3Nzc2NywiZXhwIjoxNjM0OTgxMzY3LCJzdWIiOiJhY2Nlc3NfdG9rZW4ifQ.66CFWs6kVr9fjeGCe0g5EmkwXDmWd8kAPPSVVNnbRw0
+          required: false
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/responseProfile'
+        '400':
+          description: 400 response
+          schema:
+            $ref: '#/definitions/400'
+        '401':
+          description: 401 response
+          schema:
+            $ref: '#/definitions/401'
+        '403':
+          description: 403 response
+          schema:
+            $ref: '#/definitions/403'
+        '404':
+          description: 404 response
+          schema:
+            $ref: '#/definitions/404'
+        '500':
+          description: 500 response
+          schema:
+            $ref: '#/definitions/500'
+      security:
+        - auth: []
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+securityDefinitions:
+  auth:
+    type: apiKey
+    name: Authorization
+    in: header
+    x-amazon-apigateway-authtype: custom
+definitions:
+  '200':
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        description: OK
+    description: OK
+  '400':
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        description: Bad Request
+    description: Bad Request
+  '401':
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        description: UnAuthorized
+    description: UnAuthorized
+  '403':
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        description: Forbidden
+    description: Forbidden
+  '404':
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        description: Not Found
+    description: Not Found
+  '500':
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        description: Internal server error
+    description: Internal Error
+  requestCheckEmail:
+    type: object
+    required:
+      - email
+      - is_type
+    properties:
+      is_type:
+        type: boolean
+        description: '회원가입: false, 비밀번호 찾기: true'
+      email:
+        type: string
+        description: youn9354@naver.com
+    description: check Email
+  requestCreateUser:
+    type: object
+    required:
+      - email
+      - is_type
+      - password
+      - repeat_password
+    properties:
+      password:
+        type: string
+        description: test1234!@#
+      repeat_password:
+        type: string
+        description: test1234!@#
+      is_type:
+        type: boolean
+        description: '회원가입: false, 비밀번호 찾기: true'
+      email:
+        type: string
+        description: youn9354@naver.com
+    description: create user
+  requestUpdateEmailCode:
+    type: object
+    required:
+      - email
+      - is_type
+    properties:
+      is_type:
+        type: boolean
+        description: '회원가입: false, 비밀번호 찾기: true'
+      email:
+        type: string
+        description: youn9354@naver.com
+    description: update Email Code
+  requestLoginUser:
+    type: object
+    required:
+      - email
+      - password
+    properties:
+      password:
+        type: string
+        description: test1234#@!
+      email:
+        type: string
+        description: youn9354@naver.com
+    description: request user
+  requestUpdateProile:
+    type: object
+    required:
+      - description
+      - name
+      - profile_links
+    properties:
+      profile_links:
+        type: object
+        description: 프로필 링크
+        properties:
+          github:
+            type: string
+            description: https://github.com/Youngiyong
+          facebook:
+            type: string
+            description: https://www.facebook.com/01092069357
+          instagram:
+            type: string
+            description: https://www.instagram.com/dev_giyong
+      name:
+        type: string
+        description: 윤기용
+      description:
+        type: string
+        description: 프로필 설명
+    description: profile update
+  responseRedirect:
+    type: object
+    required:
+      - data
+      - message
+    properties:
+      data:
+        type: object
+        properties:
+          link:
+            type: string
+            description: https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent&scope=email%20profile&response_type=code&client_id=349527998466-11m4n6h3302b309b5gd6n9uhgr1lrdle.apps.googleusercontent.com&redirect_uri=https%3A%2F%2F6mstom4jod.execute-api.ap-northeast-2.amazonaws.com%2Fdev%2Fv1%2Fauth%2Fgoogle%2Fcallback
+      message:
+        type: string
+        description: OK
+    description: redirect url
+  responseFollowers:
+    type: object
+    required:
+      - data
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            follower_user:
+              type: object
+              description: 'id: ..., username: ...., etc'
+              properties: {}
+            created_at:
+              type: string
+              description: '2020-11-25T09:13:42.000Z'
+            id:
+              type: string
+              description: 12b2ca6e-ffeb-4365-baf1-ce49511fad86
+          required:
+            - created_at
+            - follower_user
+            - id
+    description: follower list
+  requestCheckEmailCode:
+    type: object
+    required:
+      - code
+      - email
+      - is_type
+    properties:
+      code:
+        type: string
+        description: dffefc
+      is_type:
+        type: boolean
+        description: '회원가입: false, 비밀번호 찾기: true'
+      email:
+        type: string
+        description: youn9354@naver.com
+    description: check Email Code
+  requestFollow:
+    type: object
+    required:
+      - follow_user_id
+    properties:
+      follow_user_id:
+        type: string
+        description: acb3c7c5-4d5d-4266-bef4-776fff6c27fb
+    description: create follow
+  responseLoginUser:
+    type: object
+    required:
+      - data
+    properties:
+      data:
+        type: object
+        properties:
+          profile:
+            type: object
+            description: 'id: ..., name: ...., thumnail'
+            properties: {}
+          id:
+            type: string
+            description: 12b2ca6e-ffeb-4365-baf1-ce49511fad86
+          email:
+            type: string
+            description: youn9354@naver.com
+          username:
+            type: string
+            description: 윤기돌
+        required:
+          - email
+          - id
+          - profile
+          - username
+    description: response user
+  responseUpload:
+    type: object
+    required:
+      - data
+    properties:
+      data:
+        type: object
+        properties:
+          image:
+            type: string
+            description: https://s3.ap-northeast-2.amazonaws.com/cdn.browny.io/profile/images/acb3c7c5-4d5d-4266-bef4-776fff6c27fb/thumnail.png
+    description: s3 upload image
+  Test:
+    type: object
+    required:
+      - country
+      - created_at
+      - ip
+      - language
+      - updated_at
+      - uuid
+    properties:
+      country:
+        type: string
+        description: KR
+      updated_at:
+        type: string
+        description: '2021-01-19T08:28:48.000Z'
+      ip:
+        type: string
+        description: 192.168.0.242
+      created_at:
+        type: string
+        description: '2020-11-03T03:10:37.000Z'
+      language:
+        type: string
+        description: ko
+      uuid:
+        type: string
+        description: 14627518-D668-4293-BE28-08F0222A77CA
+    description: 테스트
+  responseProfile:
+    type: object
+    required:
+      - data
+    properties:
+      data:
+        type: object
+        properties:
+          thumbnail:
+            type: string
+            description: profile/images/de592514-25bf-4f81-84d5-4c333712ff84/thumnail.png
+          profile_links:
+            type: object
+            description: 'github: ..., kakao: ...., etc'
+            properties: {}
+          updated_at:
+            type: string
+            description: '2021-02-17T01:41:13.000Z'
+          name:
+            type: string
+            description: 윤기돌
+          created_at:
+            type: string
+            description: '2020-11-25T09:13:42.000Z'
+          id:
+            type: string
+            description: 12b2ca6e-ffeb-4365-baf1-ce49511fad86
+          fk_user_id:
+            type: string
+            description: 12b2ca6e-ffeb-4365-baf1-ce49511fad86
+        required:
+          - created_at
+          - fk_user_id
+          - id
+          - name
+          - profile_links
+          - thumbnail
+          - updated_at
+    description: thumnail null update
+  responseFollows:
+    type: object
+    required:
+      - data
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            follow_user:
+              type: object
+              description: 'id: ..., username: ...., etc'
+              properties: {}
+            created_at:
+              type: string
+              description: '2020-11-25T09:13:42.000Z'
+            id:
+              type: string
+              description: 12b2ca6e-ffeb-4365-baf1-ce49511fad86
+          required:
+            - created_at
+            - follow_user
+            - id
+    description: follow list
+  responseRefresh:
+    type: object
+    properties:
+      headers:
+        type: array
+        items:
+          type: object
+          properties:
+            access_token:
+              type: string
+              description: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk2ODk2NCwiZXhwIjoxNjM3NDc0NTY0LCJzdWIiOiJyZWZyZXNoX3Rva2VuIn0.g4ar0baeAoaVkIOYfhev51n8YvccN7-12V3iHoQSLjo
+            refresh_token:
+              type: string
+              description: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk2ODk2NCwiZXhwIjoxNjM3NDc0NTY0LCJzdWIiOiJyZWZyZXNoX3Rva2VuIn0.g4ar0baeAoaVkIOYfhev51n8YvccN7-12V3iHoQSLjo
+          required:
+            - access_token
+            - refresh_token
+      message:
+        type: string
+        description: OK
+    description: refresh token
+  requestRefresh:
+    type: object
+    required:
+      - refresh_token
+    properties:
+      refresh_token:
+        type: string
+        description: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk2ODk2NCwiZXhwIjoxNjM3NDc0NTY0LCJzdWIiOiJyZWZyZXNoX3Rva2VuIn0.g4ar0baeAoaVkIOYfhev51n8YvccN7-12V3iHoQSLjo
+    description: refresh token

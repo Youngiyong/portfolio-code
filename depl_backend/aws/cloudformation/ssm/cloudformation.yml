@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: dev-ssm-resource-parameter
+
+Resources:
+  BasicParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: RDS_PORT
+      Type: String
+      Value: 5432
+      Tags:
+        Environment: DEV

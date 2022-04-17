@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "message": {
+            "type": "string",
+            "description": "UnAuthorized"
+        }
+    },
+    "required": [
+        "message"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

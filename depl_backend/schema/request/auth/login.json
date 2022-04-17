@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "email": {
+            "type": "string",
+            "description": "youn9354@naver.com"
+        },
+        "password": {
+            "type": "string",
+            "description": "test1234#@!" 
+        }
+    },
+    "required": [
+        "email",
+        "password"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

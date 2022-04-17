@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "follow_user_id": {
+            "type": "string",
+            "description": "acb3c7c5-4d5d-4266-bef4-776fff6c27fb"
+        }
+    },
+    "required": [
+        "follow_user_id"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

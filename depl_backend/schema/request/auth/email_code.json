@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "description": "이메일 재발송 요청 정보",
+    "properties": {
+        "email": {
+            "type": "string",
+            "description": "youn9354@naver.com" 
+        },
+        "is_type": {
+            "type": "boolean",
+            "description": "회원가입: false, 비밀번호 찾기: true" 
+        }
+    },
+    "required": [
+        "email",
+        "is_type"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

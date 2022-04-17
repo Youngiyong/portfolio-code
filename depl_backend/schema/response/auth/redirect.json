@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "message": {
+            "type": "string",
+            "description": "OK"
+        },
+        "data": {
+            "type": "object",
+            "properties": {
+                "link": {
+                    "type": "string",
+        	        "description": "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent&scope=email%20profile&response_type=code&client_id=349527998466-11m4n6h3302b309b5gd6n9uhgr1lrdle.apps.googleusercontent.com&redirect_uri=https%3A%2F%2F6mstom4jod.execute-api.ap-northeast-2.amazonaws.com%2Fdev%2Fv1%2Fauth%2Fgoogle%2Fcallback"
+                    }
+                }
+            }
+    },
+    "required": [
+        "message",
+        "data"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

@@ -1,0 +1,56 @@
+{
+  "name": "browny-api",
+  "version": "0.0.1",
+  "description": "browny api",
+  "main": "handler.js",
+  "scripts": {
+    "invoke": "time DEBUG='*' sls invoke local -f $FUNC -p payload/$FUNC.json",
+    "build": "tsc",
+    "test": "jest | npx sls package --stage dev",
+    "typeorm": "ts-node -r tsconfig-paths/register src/entity/index.ts",
+    "start": "ts-node src/index.ts",
+    "deploy": "npx sls deploy --stage dev",
+    "deploy:prod": "npx sls deploy --stage prod",
+    "remove": "sls remove --stage dev",
+    "remove:prod": "sls remove --stage prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/browny9/browny_backend.git"
+  },
+  "author": "browny9532@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/browny9/issues"
+  },
+  "homepage": "https://browny.com/example",
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.83",
+    "@types/node": "^12.0.2",
+    "aws-sdk": "^2.610.0",
+    "axios": "^0.21.4",
+    "dotenv": "^10.0.0",
+    "path": "^0.12.7",
+    "reflect-metadata": "^0.1.10",
+    "pg": "^8.4.0",
+    "prettier": "^2.4.1",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.4.1",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^5.12.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.17.0",
+    "typeorm": "^0.2.22",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "jest": "^25.1.0",
+    "serverless": "^2.32.0",
+    "serverless-offline": "^7.0.0",
+    "serverless-webpack": "^5.3.1"
+  }
+}

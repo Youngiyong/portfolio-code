@@ -1,0 +1,47 @@
+{
+    "type": "object",
+    "properties": {
+        "data": {
+            "type": "array",
+            "items": {
+                "type": [
+                    "object"
+                ],
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "thumnail",
+                    "created_at"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "12b2ca6e-ffeb-4365-baf1-ce49511fad86"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Java"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Java Description"
+                    },
+                    "thumnail": {
+                        "type": "string",
+                        "description": "Java Description"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "description": "2020-11-25T09:13:42.000Z"
+                    }
+
+                }
+            }
+        }
+    },
+    "required": [
+        "data"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

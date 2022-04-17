@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "uuid": {
+            "type": "string",
+            "description": "14627518-D668-4293-BE28-08F0222A77CA"
+        },
+        "country": {
+            "type": "string",
+            "description": "KR"
+        },
+        "language": {
+            "type": "string",
+            "description": "ko"
+        },
+        "ip": {
+            "type": "string",
+            "description": "192.168.0.242"
+        },
+        "created_at": {
+            "type": "string",
+            "description": "2020-11-03T03:10:37.000Z"
+        },
+        "updated_at": {
+            "type": "string",
+            "description": "2021-01-19T08:28:48.000Z"
+        }
+    },
+    "required": [
+        "uuid",
+        "country",
+        "language",
+        "ip",
+        "created_at",
+        "updated_at"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

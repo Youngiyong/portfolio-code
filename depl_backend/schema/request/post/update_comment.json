@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "text": {
+            "type": "string",
+            "description": "댓글 내용" 
+        }
+    },
+    "required": [
+        "text"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

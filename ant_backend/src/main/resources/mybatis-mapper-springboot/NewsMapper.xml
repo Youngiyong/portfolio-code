@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTDMapper3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.ant.mapper.springboot.NewsMapper">
+  
+  <select id="selectByNewsId" resultType="com.ant.vo.NewsVO"
+      parameterType="string">
+         SELECT * FROM news
+         WHERE news_id = #{newsId}
+  </select>
+  
+  <select id="selectKeywordByNewsId" resultType="com.ant.vo.NewsVO"
+      parameterType="string">
+         SELECT news_id, keyword, pmi FROM news_keyword 
+         WHERE news_id = #{newsId} 
+         ORDER BY pmi desc
+         LIMIT 3
+  </select>
+  
+  <select id="selectKeywordByUserId" resultType="com.ant.vo.UserVO" 
+  	   parameterType="int">
+  		SELECT keyword FROM user
+  		WHERE userid = #{id}
+  </select>
+  
+  <update id="updateKeywordByUserId" parameterType="com.ant.vo.UserVO">
+  		UPDATE user SET keyword = #{keyword}
+  		WHERE userid = #{id}
+  </update>
+  
+  </mapper>

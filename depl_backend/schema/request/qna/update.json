@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string",
+            "description": "QNA 제목" 
+        },
+        "text": {
+            "type": "string",
+            "description": "QNA 내용" 
+        },
+        "is_private": {
+            "type": "boolean",
+            "description": "비공개 여부" 
+        },
+        "is_markdown": {
+            "type": "boolean",
+            "description": "마크다운 여부" 
+        },
+        "is_temp": {
+            "type": "boolean",
+            "description": "임시 저장 여부" 
+        },
+        
+        "create_tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "tag 등록 네임 리스트"
+        },
+
+        "delete_tags": {
+            "type": "array",
+            "items": { "type": "string" }
+        }
+    },
+    "required": [
+        "title",
+        "text",
+        "is_private",
+        "is_markdown",
+        "create_tags",
+        "delete_tags"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

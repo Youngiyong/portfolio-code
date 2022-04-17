@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "post_id": {
+            "type": "string",
+            "description": "618f3516-6765-4a09-bd42-504439787a9d" 
+        },
+        "text": {
+            "type": "string",
+            "description": "댓글 내용" 
+        }
+    },
+    "required": [
+        "post_id",
+        "text"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

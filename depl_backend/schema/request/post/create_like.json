@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "post_id": {
+            "type": "string",
+            "description": "69dd1474-ccc1-45f6-b646-53607369cc00" 
+        }
+    },
+    "required": [
+        "post_id"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

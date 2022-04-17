@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "data": {
+            "type": "object",
+            "properties": {
+                "image": {
+                    "type": "string",
+        	        "description": "https://s3.ap-northeast-2.amazonaws.com/cdn.browny.io/profile/images/acb3c7c5-4d5d-4266-bef4-776fff6c27fb/thumnail.png"  }
+                }
+            }
+    },
+    "required": [
+        "data"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "message": {
+            "type": "string",
+            "description": "OK"
+        },
+        "headers": {
+            "type": "array",
+            "items": {
+                "type": [
+                    "object"
+                ],
+                "required": [
+                    "access_token",
+                    "refresh_token"
+                ],
+                "properties": {
+                    "access_token": {
+                        "type": "string",
+                        "description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk2ODk2NCwiZXhwIjoxNjM3NDc0NTY0LCJzdWIiOiJyZWZyZXNoX3Rva2VuIn0.g4ar0baeAoaVkIOYfhev51n8YvccN7-12V3iHoQSLjo"
+                    },
+                    "refresh_token": {
+                        "type": "string",
+                        "description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYjNjN2M1LTRkNWQtNDI2Ni1iZWY0LTc3NmZmZjZjMjdmYiIsImlhdCI6MTYzNDk2ODk2NCwiZXhwIjoxNjM3NDc0NTY0LCJzdWIiOiJyZWZyZXNoX3Rva2VuIn0.g4ar0baeAoaVkIOYfhev51n8YvccN7-12V3iHoQSLjo"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "data"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

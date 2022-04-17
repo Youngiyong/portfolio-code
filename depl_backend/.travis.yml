@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+  - "12"
+# for code analysis sonarqube
+git:
+  depth: false
+notifications:
+  email:
+    on_success: change # only if status change from fail to success
+    on_failure: always # if there is a fail
+    recipients:
+      - [email]
+  slack:
+    on_success: always
+    rooms: sideplatform-browny:[toketn]
+script:
+  - yarn test
+
+before_deploy:
+  - serverless config credentials --provider aws --key aws_access_key --secret aws_secret_key
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: yarn deploy
+    on:
+      branch: develop
+
+  - provider: script
+    skip_cleanup: true
+    script: yarn deploy:prod
+    on:
+      branch: main

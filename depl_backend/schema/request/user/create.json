@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "description": "회원가입 정보",
+    "properties": {
+        "email": {
+            "type": "string",
+            "description": "youn9354@naver.com" 
+        },
+        "password": {
+            "type": "string",
+            "description": "test1234!@#" 
+        },
+        "repeat_password": {
+            "type": "string",
+            "description": "test1234!@#" 
+        },
+        "is_type": {
+            "type": "boolean",
+            "description": "회원가입: false, 비밀번호 찾기: true" 
+        }
+    },
+    "required": [
+        "email",
+        "password",
+        "repeat_password",
+        "is_type"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}

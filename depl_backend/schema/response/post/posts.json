@@ -1,0 +1,91 @@
+{
+    "type": "object",
+    "properties": {
+        "data": {
+            "type": "array",
+            "items": {
+                "type": [
+                    "object"
+                ],
+                "required": [
+                    "id",
+                    "title",
+                    "fk_user_id",
+                    "text",
+                    "thumnail",
+                    "is_private",
+                    "is_markdown",
+                    "is_temp",
+                    "created_at",
+                    "updated_at",
+                    "deleted_at",
+                    "comments",
+                    "tags",
+                    "likes"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "12b2ca6e-ffeb-4365-baf1-ce49511fad86"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "제목"
+                    },
+                    "fk_user_id": {
+                        "type": "string",
+                        "description": "12b2ca6e-ffeb-4365-baf1-ce49511fad86"
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "post 본문"
+                    },
+                    "thumnail": {
+                        "type": "string",
+                        "description": "썸네일"
+                    },
+                    "is_private": {
+                        "type": "boolean",
+                        "description": "공개 여부"
+                    },
+                    "is_markdown": {
+                        "type": "boolean",
+                        "description": "마크다운 여부"
+                    },
+                    "is_temp": {
+                        "type": "boolean",
+                        "description": "임시 저장 본문"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "description": "2020-11-25T09:13:42.000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "description": "2020-11-25T09:13:42.000Z"
+                    },
+                    "deleted_at": {
+                        "type": "string",
+                        "description": "2020-11-25T09:13:42.000Z"
+                    },
+                    "comments": {
+                        "type": "object",
+                        "description": "id: ...., etc"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "description": "id: ...., etc"
+                    },
+                    "likes": {
+                        "type": "object",
+                        "description": "id: ...., etc"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "data"
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#"
+}
